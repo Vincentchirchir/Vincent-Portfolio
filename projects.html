@@ -1,183 +1,434 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/jpg" href="pictures/icon.jpg" />
-<title>Projects – Vincent Chirchir</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/jpg" href="pictures/icon.jpg" />
+    <title>Projects – Vincent Chirchir</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-  :root{
-    --ink:#0e1220; --light:#fff; --muted:#6c7383; --rule:#e7e7ea;
-    --link:#0b66ff; --max:1200px; --navh:68px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0; overflow-x:hidden}
-  html{scroll-behavior:smooth}
+    <style>
+      :root {
+        --ink: #0e1220;
+        --light: #fff;
+        --muted: #6c7383;
+        --rule: #e7e7ea;
+        --link: #0b66ff;
+        --max: 1200px;
+        --navh: 68px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        overflow-x: hidden;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
 
-  body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink); background:#fff}
+      body {
+        font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--ink);
+        background: #fff;
+      }
 
-  /* NAV (solid since this page is content-heavy) */
-  .nav-wrap{position:sticky; top:0; left:0; right:0; height:var(--navh); z-index:30;
-            background:#0b0b0c; border-bottom:1px solid #1f1f22}
-  .nav{max-width:var(--max); margin:0 auto; padding:0 24px; height:100%;
-       display:flex; align-items:center; justify-content:space-between}
-  .left{display:flex; align-items:center; gap:10px}
-  .avatar{width:32px; height:32px; border-radius:50%; object-fit:cover; border:1px solid rgba(255,255,255,.35)}
-  .brand{font-family:"Playfair Display",serif; letter-spacing:.16em; font-size:18px}
-  .brand a{color:var(--light); text-decoration:none}
-  .menu{display:flex; gap:28px}
-  .menu a{color:#f3f4f6; text-decoration:none; font-weight:600; font-size:14px; letter-spacing:.06em}
-  .menu a:hover{opacity:.9}
+      /* NAV (solid since this page is content-heavy) */
+      .nav-wrap {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--navh);
+        z-index: 30;
+        background: #0b0b0c;
+        border-bottom: 1px solid #1f1f22;
+      }
+      .nav {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 24px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+      }
+      .brand {
+        font-family: "Playfair Display", serif;
+        letter-spacing: 0.16em;
+        font-size: 18px;
+      }
+      .brand a {
+        color: var(--light);
+        text-decoration: none;
+      }
+      .menu {
+        display: flex;
+        gap: 28px;
+      }
+      .menu a {
+        color: #f3f4f6;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+      }
+      .menu a:hover {
+        opacity: 0.9;
+      }
 
-  /* PAGE HEADER */
-  .hero{max-width:var(--max); margin:22px auto 0; padding:18px 24px 8px}
-  .eyebrow{letter-spacing:.35em; font-size:12px; color:#80879a; text-transform:uppercase}
-  .title{font-family:"Playfair Display",serif; font-weight:700; font-size:clamp(28px,5vw,40px); margin:6px 0 6px}
-  .subtitle{color:#848b9c; margin:0 0 8px}
+      /* PAGE HEADER */
+      .hero {
+        max-width: var(--max);
+        margin: 22px auto 0;
+        padding: 18px 24px 8px;
+      }
+      .eyebrow {
+        letter-spacing: 0.35em;
+        font-size: 12px;
+        color: #80879a;
+        text-transform: uppercase;
+      }
+      .title {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: clamp(28px, 5vw, 40px);
+        margin: 6px 0 6px;
+      }
+      .subtitle {
+        color: #848b9c;
+        margin: 0 0 8px;
+      }
 
-  /* quick jump */
-  .jump{display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 0}
-  .jump a{padding:.45rem .7rem; border:1px solid var(--rule); border-radius:999px; text-decoration:none; color:#2b3445; font-weight:600; font-size:.92rem}
-  .jump a:hover{border-color:#b9bed1}
+      /* quick jump */
+      .jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 10px 0 0;
+      }
+      .jump a {
+        padding: 0.45rem 0.7rem;
+        border: 1px solid var(--rule);
+        border-radius: 999px;
+        text-decoration: none;
+        color: #2b3445;
+        font-weight: 600;
+        font-size: 0.92rem;
+      }
+      .jump a:hover {
+        border-color: #b9bed1;
+      }
 
-  /* SECTIONS */
-  main{max-width:var(--max); margin:0 auto; padding:0 24px 40px}
-  section{padding:22px 0; border-top:1px solid var(--rule)}
-  section:target{scroll-margin-top:calc(var(--navh) + 16px)} /* anchor offset */
-  section h2{margin:0 0 6px; font-size:22px}
-  .meta{color:#6c7383; margin:0 0 8px; font-size:.95rem}
+      /* SECTIONS */
+      main {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 24px 40px;
+      }
+      section {
+        padding: 22px 0;
+        border-top: 1px solid var(--rule);
+      }
+      section:target {
+        scroll-margin-top: calc(var(--navh) + 16px);
+      } /* anchor offset */
+      section h2 {
+        margin: 0 0 6px;
+        font-size: 22px;
+      }
+      .meta {
+        color: #6c7383;
+        margin: 0 0 8px;
+        font-size: 0.95rem;
+      }
 
-  /* PROJECT LIST (cards but borderless) */
-  .project{padding:20px 0}
-  .project + .project{border-top:1px dashed #e3e3e8}
-  .media{width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:8px; background:#f3f5f8}
+      /* PROJECT LIST (cards but borderless) */
+      .project {
+        padding: 20px 0;
+      }
+      .project + .project {
+        border-top: 1px dashed #e3e3e8;
+      }
+      .media {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        border-radius: 8px;
+        background: #f3f5f8;
+      }
 
-  /* PHOTO GRID */
-  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px}
-  .grid a{display:block}
-  .grid img{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px}
+      /* PHOTO GRID */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 12px;
+      }
+      .grid a {
+        display: block;
+      }
+      .grid img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: 6px;
+      }
 
-  /* EMBEDS */
-  iframe, embed{width:100%; height:520px; border:none; border-radius:8px; background:#f3f5f8}
+      /* EMBEDS */
+      iframe,
+      embed {
+        width: 100%;
+        height: 520px;
+        border: none;
+        border-radius: 8px;
+        background: #f3f5f8;
+      }
 
-  /* LINKS */
-  a.inline{color:var(--link); text-decoration:underline; text-underline-offset:3px}
-  .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
-  .btn{display:inline-block; padding:.55rem .85rem; border:1px solid #d9dbe3; border-radius:10px; text-decoration:none; color:#1e2a3e; font-weight:600}
-  .btn:hover{border-color:#b9bed1}
+      /* LINKS */
+      a.inline {
+        color: var(--link);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .btns {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.55rem 0.85rem;
+        border: 1px solid #d9dbe3;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #1e2a3e;
+        font-weight: 600;
+      }
+      .btn:hover {
+        border-color: #b9bed1;
+      }
 
-  /* FOOTER */
-  footer{max-width:var(--max); margin:20px auto 26px; padding:0 24px; color:#8a8f9e; font-size:12px; text-align:center}
-</style>
-</head>
-<body>
-<!-- NAV -->
-<div class="nav-wrap">
-  <div class="nav">
-    <div class="left">
-      <img class="avatar" src="pictures/profile.jpg" alt="Vincent Chirchir">
-      <div class="brand"><a href="index.html">V. CHIRCHIR</a></div>
-    </div>
-    <nav class="menu" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="projects.html" aria-current="page">Projects</a>
-      <a href="about.html">About Me</a>
-      <a href="contact.html">Contact Me</a>
-    </nav>
-  </div>
-</div>
-
-<!-- PAGE HEADER -->
-<header class="hero">
-  <div class="eyebrow">Projects & Galleries</div>
-  <h1 class="title">My Work</h1>
-  <p class="subtitle">POS, Maps, Dashboards, Photos, and Reports.</p>
-  <p class="jump">
-    <a href="#photos">Photos</a>
-    <a href="#maps">Maps</a>
-    <a href="#dashboards">Dashboards</a>
-    <a href="#reports">Reports</a>
-  </p>
-</header>
-
-<main>
-
-  <!-- FEATURED PROJECTS (nice, simple list) -->
-  <section id="featured">
-    <h2>Featured</h2>
-    <div class="project">
-      <h3>Fieldmax Shop — POS & Inventory</h3>
-      <p class="meta">Django/Flask • PostgreSQL • FIFO • Role-based dashboards</p>
-      <p>A full POS/inventory system with batch-based (FIFO) profit, product lookups, and role-based views.</p>
-      <div class="btns">
-        <a class="btn" href="https://github.com/Vincentchirchir/fieldmax-sales-app" target="_blank" rel="noopener">Code</a>
-        <a class="btn" href="demos/fieldmax-demo.pdf" target="_blank" rel="noopener"></a>
+      /* FOOTER */
+      footer {
+        max-width: var(--max);
+        margin: 20px auto 26px;
+        padding: 0 24px;
+        color: #8a8f9e;
+        font-size: 12px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <div class="nav-wrap">
+      <div class="nav">
+        <div class="left">
+          <img
+            class="avatar"
+            src="pictures/profile.jpg"
+            alt="Vincent Chirchir"
+          />
+          <div class="brand"><a href="index.html">V. CHIRCHIR</a></div>
+        </div>
+        <nav class="menu" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="projects.html" aria-current="page">Projects</a>
+          <a href="about.html">About Me</a>
+          <a href="contact.html">Contact Me</a>
+        </nav>
       </div>
-      <img class="media" src="project images/fieldmax-dashboard.png" alt="Fieldmax dashboard">
     </div>
 
-    <div class="project">
-      <h3>Municipal Asset Collection & Analysis</h3>
-      <p class="meta">ArcGIS Field Maps • ArcGIS Pro • QA/QC</p>
-      <p>Trees, hydrants, traffic signals, bus stops/shelters, and parking assets prepared for dashboards and condition analysis.</p>
-      <div class="btns">
-        <a class="btn" href="docs/Fire Hydrants Report.pdf" target="_blank" rel="noopener">Summary PDF</a>
-      </div>
-      <img class="media" src="project images/asset-map.png" alt="Municipal asset map">
-    </div>
+    <!-- PAGE HEADER -->
+    <header class="hero">
+      <div class="eyebrow">Projects & Galleries</div>
+      <h1 class="title">My Work</h1>
+      <p class="subtitle">POS, Maps, Dashboards, Photos, and Reports.</p>
+      <p class="jump">
+        <a href="#photos">Photos</a>
+        <a href="#maps">Maps</a>
+        <a href="#dashboards">Dashboards</a>
+        <a href="#reports">Reports</a>
+      </p>
+    </header>
 
-    <div class="project">
-      <h3>Calgary Housing & Parks Study</h3>
-      <p class="meta">Spatial analysis • Clusters • Visualization</p>
-      <p>Exploring correlations between park access and residential property values in Calgary.</p>
-      <div class="btns">
-        <a class="btn" href="docs/Calgary Housing Project.pdf" target="_blank" rel="noopener">Report</a>
-      </div>
-      <img class="media" src="project images/Calgary Housing project.png" alt="Calgary housing and parks study">
-    </div>
-  </section>
+    <main>
+      <!-- FEATURED PROJECTS (nice, simple list) -->
+      <section id="featured">
+        <h2>Featured</h2>
+        <div class="project">
+          <h3>Fieldmax Shop — POS & Inventory</h3>
+          <p class="meta">
+            Django/Flask • PostgreSQL • FIFO • Role-based dashboards
+          </p>
+          <p>
+            A full POS/inventory system with batch-based (FIFO) profit, product
+            lookups, and role-based views.
+          </p>
+          <div class="btns">
+            <a
+              class="btn"
+              href="https://github.com/Vincentchirchir/fieldmax-sales-app"
+              target="_blank"
+              rel="noopener"
+              >Code</a
+            >
+            <a
+              class="btn"
+              href="demos/fieldmax-demo.pdf"
+              target="_blank"
+              rel="noopener"
+            ></a>
+          </div>
+          <img
+            class="media"
+            src="project images/fieldmax-dashboard.png"
+            alt="Fieldmax dashboard"
+          />
+        </div>
 
-  <!-- PHOTOS -->
-  <section id="photos">
-    <h2>Photos</h2>
-    <p class="meta">Field work, gear, and outputs.</p>
-    <div class="grid">
-      <!-- Link each thumbnail to its full-res file -->
-      <a href="project images/Normalized house prices.png" target="_blank" rel="noopener"><img src="project images/Normalized house prices.png" alt="Photo 1"></a>
-      <a href="project images/Fire Hydrants Distribution.png" target="_blank" rel="noopener"><img src="project images/Fire Hydrants Distribution.png" alt="Photo 2"></a>
-      <a href="project images/fieldwork image.jpg" target="_blank" rel="noopener"><img src="project images/fieldwork image.jpg" alt="Photo 3"></a>
-      <a href="project images/Distributions of Fire Hydrants Conditions_Chatham_2025.png" target="_blank" rel="noopener"><img src="project images/Distributions of Fire Hydrants Conditions_Chatham_2025.png" alt="Photo 4"></a>
-      <a href="project images/Fieldwork image2.png" target="_blank" rel="noopener"><img src="project images/Fieldwork image2.png" alt="Photo 5"></a>
-    </div>
-  </section>
+        <div class="project">
+          <h3>Municipal Asset Collection & Analysis</h3>
+          <p class="meta">ArcGIS Field Maps • ArcGIS Pro • QA/QC</p>
+          <p>
+            Trees, hydrants, traffic signals, bus stops/shelters, and parking
+            assets prepared for dashboards and condition analysis.
+          </p>
+          <div class="btns">
+            <a
+              class="btn"
+              href="docs/Fire Hydrants Report.pdf"
+              target="_blank"
+              rel="noopener"
+              >Summary PDF</a
+            >
+          </div>
+          <img
+            class="media"
+            src="project images/asset-map.png"
+            alt="Municipal asset map"
+          />
+        </div>
 
-  <!-- MAPS -->
-  <section id="maps">
-    <h2>Maps</h2>
-    <p class="meta">Interactive maps hosted on ArcGIS Online.</p>
-    <!-- Replace YOUR_WEBMAP_URL with your share link -->
-    <iframe src="https://www.arcgis.com/apps/mapviewer/index.html?webmap" title="Interactive Map"></iframe>
-  </section>
+        <div class="project">
+          <h3>Calgary Housing & Parks Study</h3>
+          <p class="meta">Spatial analysis • Clusters • Visualization</p>
+          <p>
+            Exploring correlations between park access and residential property
+            values in Calgary.
+          </p>
+          <div class="btns">
+            <a
+              class="btn"
+              href="docs/Calgary Housing Project.pdf"
+              target="_blank"
+              rel="noopener"
+              >Report</a
+            >
+          </div>
+          <img
+            class="media"
+            src="project images/Calgary Housing project.png"
+            alt="Calgary housing and parks study"
+          />
+        </div>
+      </section>
 
-  <!-- DASHBOARDS -->
-  <section id="dashboards">
-    <h2>Dashboards</h2>
-    <p class="meta"></p>
-    <!-- Replace with your ArcGIS Dashboard URL -->
-    <iframe src="https://sait.maps.arcgis.com/apps/dashboards/99a784f95624414f8206e0c62c646e94" title="ArcGIS Dashboard"></iframe>
-  </section>
-</main>
+      <!-- PHOTOS -->
+      <section id="photos">
+        <h2>Photos</h2>
+        <p class="meta">Field work, gear, and outputs.</p>
+        <div class="grid">
+          <!-- Link each thumbnail to its full-res file -->
+          <a
+            href="project images/Normalized house prices.png"
+            target="_blank"
+            rel="noopener"
+            ><img
+              src="project images/Normalized house prices.png"
+              alt="Photo 1"
+          /></a>
+          <a
+            href="project images/Fire Hydrants Distribution.png"
+            target="_blank"
+            rel="noopener"
+            ><img
+              src="project images/Fire Hydrants Distribution.png"
+              alt="Photo 2"
+          /></a>
+          <a
+            href="project images/fieldwork image.jpg"
+            target="_blank"
+            rel="noopener"
+            ><img src="project images/fieldwork image.jpg" alt="Photo 3"
+          /></a>
+          <a
+            href="project images/Distributions of Fire Hydrants Conditions_Chatham_2025.png"
+            target="_blank"
+            rel="noopener"
+            ><img
+              src="project images/Distributions of Fire Hydrants Conditions_Chatham_2025.png"
+              alt="Photo 4"
+          /></a>
+          <a
+            href="project images/Fieldwork image2.png"
+            target="_blank"
+            rel="noopener"
+            ><img src="project images/Fieldwork image2.png" alt="Photo 5"
+          /></a>
+        </div>
+      </section>
 
-<footer>© <span id="year"></span> Vincent Chirchir</footer>
+      <!-- MAPS -->
+      <section id="maps">
+        <h2>Maps</h2>
+        <p class="meta">Interactive maps hosted on ArcGIS Online.</p>
+        <!-- Replace YOUR_WEBMAP_URL with your share link -->
+        <iframe
+          src="https://www.arcgis.com/apps/mapviewer/index.html?webmap"
+          title="Interactive Map"
+        ></iframe>
+      </section>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
-  });
-</script>
-</body>
+      <!-- DASHBOARDS -->
+      <section id="dashboards">
+        <h2>Dashboards</h2>
+        <p class="meta"></p>
+        <!-- Replace with your ArcGIS Dashboard URL -->
+        <iframe
+          src="https://sait.maps.arcgis.com/apps/dashboards/99a784f95624414f8206e0c62c646e94"
+          title="ArcGIS Dashboard"
+        ></iframe>
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> Vincent Chirchir</footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const y = document.getElementById("year");
+        if (y) y.textContent = new Date().getFullYear();
+      });
+    </script>
+  </body>
 </html>

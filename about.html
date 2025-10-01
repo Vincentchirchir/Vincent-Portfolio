@@ -1,176 +1,395 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/jpg" href="pictures/icon.jpg" />
-<title>About – Vincent Chirchir</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/jpg" href="pictures/icon.jpg" />
+    <title>About – Vincent Chirchir</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-  :root{
-    --ink:#0e1220; --sub:#667085; --rule:#e7e7ea; --link:#0b66ff;
-    --max:1100px; --navh:68px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0; overflow-x:hidden}
-  body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink); background:#fff}
+    <style>
+      :root {
+        --ink: #0e1220;
+        --sub: #667085;
+        --rule: #e7e7ea;
+        --link: #0b66ff;
+        --max: 1100px;
+        --navh: 68px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        overflow-x: hidden;
+      }
+      body {
+        font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--ink);
+        background: #fff;
+      }
 
-  /* NAV (solid dark, like work.html) */
-  .nav-wrap{position:sticky; top:0; left:0; right:0; height:var(--navh); z-index:30; background:#0b0b0c; border-bottom:1px solid #1f1f22}
-  .nav{max-width:var(--max); margin:0 auto; padding:0 24px; height:100%; display:flex; align-items:center; justify-content:space-between}
-  .left{display:flex; align-items:center; gap:10px}
-  .avatar{width:32px; height:32px; border-radius:50%; object-fit:cover; border:1px solid rgba(255,255,255,.35)}
-  .brand{font-family:"Playfair Display",serif; letter-spacing:.16em; font-size:18px}
-  .brand a{color:#fff; text-decoration:none}
-  .menu{display:flex; gap:28px}
-  .menu a{color:#f3f4f6; text-decoration:none; font-weight:600; font-size:14px; letter-spacing:.06em}
-  .menu a:hover{opacity:.9}
+      /* NAV (solid dark, like work.html) */
+      .nav-wrap {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--navh);
+        z-index: 30;
+        background: #0b0b0c;
+        border-bottom: 1px solid #1f1f22;
+      }
+      .nav {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 24px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+      }
+      .brand {
+        font-family: "Playfair Display", serif;
+        letter-spacing: 0.16em;
+        font-size: 18px;
+      }
+      .brand a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .menu {
+        display: flex;
+        gap: 28px;
+      }
+      .menu a {
+        color: #f3f4f6;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+      }
+      .menu a:hover {
+        opacity: 0.9;
+      }
 
-  /* Header area */
-  header.page{max-width:var(--max); margin:22px auto 0; padding:18px 24px 8px}
-  .eyebrow{letter-spacing:.35em; font-size:12px; color:#80879a; text-transform:uppercase}
-  .title{font-family:"Playfair Display",serif; font-weight:700; font-size:clamp(28px,5vw,40px); margin:6px 0 6px}
-  .subtitle{color:#848b9c; margin:0 0 8px}
+      /* Header area */
+      header.page {
+        max-width: var(--max);
+        margin: 22px auto 0;
+        padding: 18px 24px 8px;
+      }
+      .eyebrow {
+        letter-spacing: 0.35em;
+        font-size: 12px;
+        color: #80879a;
+        text-transform: uppercase;
+      }
+      .title {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: clamp(28px, 5vw, 40px);
+        margin: 6px 0 6px;
+      }
+      .subtitle {
+        color: #848b9c;
+        margin: 0 0 8px;
+      }
 
-  /* Layout */
-  main{max-width:var(--max); margin:0 auto; padding:0 24px 40px}
-  section{padding:22px 0; border-top:1px solid var(--rule)}
-  section h2{margin:0 0 6px; font-size:22px}
-  p{margin:0 0 10px; line-height:1.8}
-  ul{margin:6px 0 0 18px} li{margin:6px 0}
+      /* Layout */
+      main {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 24px 40px;
+      }
+      section {
+        padding: 22px 0;
+        border-top: 1px solid var(--rule);
+      }
+      section h2 {
+        margin: 0 0 6px;
+        font-size: 22px;
+      }
+      p {
+        margin: 0 0 10px;
+        line-height: 1.8;
+      }
+      ul {
+        margin: 6px 0 0 18px;
+      }
+      li {
+        margin: 6px 0;
+      }
 
-  /* Intro block with photo */
-  .intro{display:grid; grid-template-columns:140px 1fr; gap:18px; align-items:start}
-  .intro .photo{width:140px; height:140px; border-radius:14px; object-fit:cover; border:1px solid #e8e9ee; background:#f5f6f8}
-  @media (max-width:700px){ .intro{grid-template-columns:1fr} .intro .photo{width:100%; height:220px} }
+      /* Intro block with photo */
+      .intro {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 18px;
+        align-items: start;
+      }
+      .intro .photo {
+        width: 140px;
+        height: 140px;
+        border-radius: 14px;
+        object-fit: cover;
+        border: 1px solid #e8e9ee;
+        background: #f5f6f8;
+      }
+      @media (max-width: 700px) {
+        .intro {
+          grid-template-columns: 1fr;
+        }
+        .intro .photo {
+          width: 100%;
+          height: 220px;
+        }
+      }
 
-  /* Chips */
-  .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px}
-  .chip{font-size:.95rem; padding:.25rem .55rem; border:1px solid #e0e1e6; border-radius:999px}
+      /* Chips */
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 6px;
+      }
+      .chip {
+        font-size: 0.95rem;
+        padding: 0.25rem 0.55rem;
+        border: 1px solid #e0e1e6;
+        border-radius: 999px;
+      }
 
-  /* Two-column lists */
-  .cols{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-  @media (max-width:800px){ .cols{grid-template-columns:1fr} }
+      /* Two-column lists */
+      .cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      @media (max-width: 800px) {
+        .cols {
+          grid-template-columns: 1fr;
+        }
+      }
 
-  /* Footer */
-  footer{max-width:var(--max); margin:20px auto 26px; padding:0 24px; color:#8a8f9e; font-size:12px; text-align:center}
-  a.inline{color:var(--link); text-decoration:underline; text-underline-offset:3px}
-  .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
-  .btn{display:inline-block; padding:.55rem .85rem; border:1px solid #d9dbe3; border-radius:10px; text-decoration:none; color:#1e2a3e; font-weight:600}
-  .btn:hover{border-color:#b9bed1}
-</style>
-</head>
-<body>
-
-<!-- NAV -->
-<div class="nav-wrap">
-  <div class="nav">
-    <div class="left">
-      <img class="avatar" src="pictures/profile.jpg" alt="Vincent Chirchir">
-      <div class="brand"><a href="index.html">V. CHIRCHIR</a></div>
-    </div>
-    <nav class="menu" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html" aria-current="page">About Me</a>
-      <a href="contact.html">Contact Me</a>
-    </nav>
-  </div>
-</div>
-
-<!-- PAGE HEADER -->
-<header class="page">
-  <div class="eyebrow">About Vincent</div>
-  <h1 class="title">Vincent Chirchir</h1>
-  <p class="subtitle">Calgary, Alberta · GIS Technician · GIS Analyst / Developer · Student SAIT (Applied GIS)</p>
-</header>
-
-<main>
-  <!-- Intro -->
-  <section>
-    <div class="intro">
-      <img class="photo" src="pictures/profile.jpg" alt="Vincent Chirchir portrait">
-      <div>
-        <h2>Profile</h2>
-        <p>I focus on spatial analysis and municipal asset management. I supported the Municipality of Chatham-Kent with field data collection and QA for trees, fire hydrants, bus stops/shelters, and parking assets—turning field data into decision-ready layers and dashboards.</p>
-        <p>I also build tools—most recently <strong>Fieldmax Shop</strong>, a POS & inventory web app (Django/Flask + PostgreSQL) with FIFO stock and role-based dashboards.</p>
-        <div class="btns">
-          <a class="btn" href="docs/Vincent Chirchir Resume.pdf" download>Download Resume (PDF)</a>
-          <a class="btn" href="mailto:vincentchirchir53@gmail.com">Email me</a>
-          <a class="btn" href="https://linkedin.com/in/vincent-chirchir" target="_blank" rel="noopener">LinkedIn</a>
+      /* Footer */
+      footer {
+        max-width: var(--max);
+        margin: 20px auto 26px;
+        padding: 0 24px;
+        color: #8a8f9e;
+        font-size: 12px;
+        text-align: center;
+      }
+      a.inline {
+        color: var(--link);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .btns {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.55rem 0.85rem;
+        border: 1px solid #d9dbe3;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #1e2a3e;
+        font-weight: 600;
+      }
+      .btn:hover {
+        border-color: #b9bed1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <div class="nav-wrap">
+      <div class="nav">
+        <div class="left">
+          <img
+            class="avatar"
+            src="pictures/profile.jpg"
+            alt="Vincent Chirchir"
+          />
+          <div class="brand"><a href="index.html">V. CHIRCHIR</a></div>
         </div>
+        <nav class="menu" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="about.html" aria-current="page">About Me</a>
+          <a href="contact.html">Contact Me</a>
+        </nav>
       </div>
     </div>
-  </section>
 
-  <!-- Skills -->
-  <section>
-    <h2>Skills</h2>
-    <div class="chips" aria-label="Skills">
-      <span class="chip">ArcGIS Pro</span>
-      <span class="chip">QGIS</span>
-      <span class="chip">Field Maps</span>
-      <span class="chip">Python</span>
-      <span class="chip">Django</span>
-      <span class="chip">Flask</span>
-      <span class="chip">PostgreSQL / PostGIS</span>
-      <span class="chip">FME</span>
-      <span class="chip">Data QA/QC</span>
-      <span class="chip">Cartography</span>
-      <span class="chip">Spatial Analysis</span>
-      <span class="chip">Dashboards</span>
-    </div>
-  </section>
+    <!-- PAGE HEADER -->
+    <header class="page">
+      <div class="eyebrow">About Vincent</div>
+      <h1 class="title">Vincent Chirchir</h1>
+      <p class="subtitle">
+        Calgary, Alberta · GIS Technician · GIS Analyst / Developer · Student
+        SAIT (Applied GIS)
+      </p>
+    </header>
 
-  <!-- Experience & Education -->
-  <section>
-    <div class="cols">
-      <div>
-        <h2>Experience</h2>
-        <p><strong>GIS Student/Data Collection </strong> — Municipality of Chatham-Kent</p>
-        <ul>
-          <li>Field collection & QA for trees, hydrants, bus stops/shelters, parking assets.</li>
-          <li>Prepared datasets for dashboards and departmental planning.</li>
-        </ul>
-        <p><strong>Developer</strong> — Fieldmax Shop (personal project)</p>
-        <ul>
-          <li>Django/Flask + PostgreSQL POS & inventory with FIFO and role-based dashboards.</li>
-        </ul>
-      </div>
-      <div>
-        <h2>Education</h2>
-        <p><strong>Southern Alberta Institute of Technology (SAIT)</strong><br/>Bachelor of Applied GIS</p>
+    <main>
+      <!-- Intro -->
+      <section>
+        <div class="intro">
+          <img
+            class="photo"
+            src="pictures/profile.jpg"
+            alt="Vincent Chirchir portrait"
+          />
+          <div>
+            <h2>Profile</h2>
+            <p>
+              I focus on spatial analysis and municipal asset management. I
+              supported the Municipality of Chatham-Kent with field data
+              collection and QA for trees, fire hydrants, bus stops/shelters,
+              and parking assets—turning field data into decision-ready layers
+              and dashboards.
+            </p>
+            <p>
+              I also build tools—most recently <strong>Fieldmax Shop</strong>, a
+              POS & inventory web app (Django/Flask + PostgreSQL) with FIFO
+              stock and role-based dashboards.
+            </p>
+            <div class="btns">
+              <a class="btn" href="docs/Vincent Chirchir Resume.pdf" download
+                >Download Resume (PDF)</a
+              >
+              <a class="btn" href="mailto:vincentchirchir53@gmail.com"
+                >Email me</a
+              >
+              <a
+                class="btn"
+                href="https://linkedin.com/in/vincent-chirchir"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <h2 style="margin-top:14px">Highlights</h2>
-        <ul>
-          <li>Municipal asset data quality & reporting</li>
-          <li>Retail systems (POS/inventory) with spatial insights</li>
-          <li>Turning messy datasets into usable maps & APIs</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+      <!-- Skills -->
+      <section>
+        <h2>Skills</h2>
+        <div class="chips" aria-label="Skills">
+          <span class="chip">ArcGIS Pro</span>
+          <span class="chip">QGIS</span>
+          <span class="chip">Field Maps</span>
+          <span class="chip">Python</span>
+          <span class="chip">Django</span>
+          <span class="chip">Flask</span>
+          <span class="chip">PostgreSQL / PostGIS</span>
+          <span class="chip">FME</span>
+          <span class="chip">Data QA/QC</span>
+          <span class="chip">Cartography</span>
+          <span class="chip">Spatial Analysis</span>
+          <span class="chip">Dashboards</span>
+        </div>
+      </section>
 
-  <!-- Links -->
-  <section>
-    <h2>Links</h2>
-    <p>
-      <a class="inline" href="https://github.com/Vincentchirchir" target="_blank" rel="noopener">GitHub</a> ·
-      <a class="inline" href="https://linkedin.com/in/vincent-chirchir" target="_blank" rel="noopener">LinkedIn</a> ·
-      <a class="inline" href="index.html">Portfolio</a>
-    </p>
-  </section>
-</main>
+      <!-- Experience & Education -->
+      <section>
+        <div class="cols">
+          <div>
+            <h2>Experience</h2>
+            <p>
+              <strong>GIS Student/Data Collection </strong> — Municipality of
+              Chatham-Kent
+            </p>
+            <ul>
+              <li>
+                Field collection & QA for trees, hydrants, bus stops/shelters,
+                parking assets.
+              </li>
+              <li>
+                Prepared datasets for dashboards and departmental planning.
+              </li>
+            </ul>
+            <p><strong>Developer</strong> — Fieldmax Shop (personal project)</p>
+            <ul>
+              <li>
+                Django/Flask + PostgreSQL POS & inventory with FIFO and
+                role-based dashboards.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2>Education</h2>
+            <p>
+              <strong>Southern Alberta Institute of Technology (SAIT)</strong
+              ><br />Bachelor of Applied GIS
+            </p>
 
-<footer>© <span id="year"></span> Vincent Chirchir</footer>
+            <h2 style="margin-top: 14px">Highlights</h2>
+            <ul>
+              <li>Municipal asset data quality & reporting</li>
+              <li>Retail systems (POS/inventory) with spatial insights</li>
+              <li>Turning messy datasets into usable maps & APIs</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
-  });
-</script>
-</body>
+      <!-- Links -->
+      <section>
+        <h2>Links</h2>
+        <p>
+          <a
+            class="inline"
+            href="https://github.com/Vincentchirchir"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+          ·
+          <a
+            class="inline"
+            href="https://linkedin.com/in/vincent-chirchir"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          ·
+          <a class="inline" href="index.html">Portfolio</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> Vincent Chirchir</footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const y = document.getElementById("year");
+        if (y) y.textContent = new Date().getFullYear();
+      });
+    </script>
+  </body>
 </html>
