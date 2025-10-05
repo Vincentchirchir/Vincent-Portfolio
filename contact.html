@@ -343,7 +343,7 @@
                 placeholder="Tell me a bit about your project..."
               ></textarea>
 
-              <!-- Honeypot anti-spam (leave empty) -->
+              <!-- Honeypot anti-spam -->
               <input
                 type="text"
                 id="company"
@@ -480,12 +480,12 @@
             err.style.display = "block";
             return;
           }
-          const to = "vincentchirchir53@gmail.com"; // TODO: set your real email
+          const to = "vincentchirchir53@gmail.com";
           const subject = `Portfolio inquiry from ${name}`;
           const body = `From: ${name} <${email}>\n\n${message}`;
           const link = `mailto:${to}?subject=${q(subject)}&body=${q(body)}`;
 
-          // Open default mail client
+          
           window.location.href = link;
           ok.style.display = "block";
         });

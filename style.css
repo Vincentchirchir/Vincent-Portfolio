@@ -151,7 +151,7 @@
         box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
       }
 
-      /* COPYRIGHT FOOTER (centered, small) */
+      /* COPYRIGHT FOOTER */
       footer {
         position: absolute;
         left: 0;
@@ -165,7 +165,7 @@
         color: rgba(255, 255, 255, 0.85);
         font-size: 12px;
       }
-      /* BOTTOM-RIGHT social bar — "Find me online:" */
+      /* BOTTOM-RIGHT social bar " */
       .socbar {
         position: absolute;
         right: 18px;
