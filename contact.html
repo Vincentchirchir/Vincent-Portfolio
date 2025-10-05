@@ -11,250 +11,271 @@
       rel="stylesheet"
     />
 
-    <style>
-      :root {
-        --ink: #0e1220;
-        --sub: #667085;
-        --rule: #e7e7ea;
-        --link: #0b66ff;
-        --max: 1100px;
-        --navh: 68px;
-        --accent: #0b66ff;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        overflow-x: hidden;
-      }
-      body {
-        font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
-        color: var(--ink);
-        background: #fff;
-      }
+    
+<style>
+  :root {
+    --bg: #1B2431;
+    --surface: rgba(255, 255, 255, 0.08);
+    --surface-solid: #2a3242;
+    --surface-alt: #333c4d;
+    --ink: #f7f8fc;
+    --muted: #cbd3e3;
+    --rule: rgba(255, 255, 255, 0.2);
+    --link: #d2e4ff;
+    --accent: #7db6ff;
+    --max: 1100px;
+    --navh: 68px;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    margin: 0;
+    overflow-x: hidden;
+  }
+  body {
+    font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+  }
 
-      /* NAV (solid dark like other content pages) */
-      .nav-wrap {
-        position: sticky;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: var(--navh);
-        z-index: 30;
-        background: #0b0b0c;
-        border-bottom: 1px solid #1f1f22;
-      }
-      .nav {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 0 24px;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .left {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .avatar {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 1px solid rgba(255, 255, 255, 0.35);
-      }
-      .brand {
-        font-family: "Playfair Display", serif;
-        letter-spacing: 0.16em;
-        font-size: 18px;
-      }
-      .brand a {
-        color: #fff;
-        text-decoration: none;
-      }
-      .menu {
-        display: flex;
-        gap: 28px;
-      }
-      .menu a {
-        color: #f3f4f6;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 14px;
-        letter-spacing: 0.06em;
-      }
-      .menu a:hover {
-        opacity: 0.9;
-      }
+  /* NAV */
+  .nav-wrap {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--navh);
+    z-index: 30;
+    background: rgba(27, 36, 49, 0.9);
+    border-bottom: 1px solid var(--rule);
+    backdrop-filter: blur(10px);
+  }
+  .nav {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+  }
+  .brand {
+    font-family: "Playfair Display", serif;
+    letter-spacing: 0.16em;
+    font-size: 18px;
+  }
+  .brand a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .menu {
+    display: flex;
+    gap: 28px;
+  }
+  .menu a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+  }
+  .menu a:hover {
+    color: var(--accent);
+  }
 
-      /* Header */
-      header.page {
-        max-width: var(--max);
-        margin: 22px auto 0;
-        padding: 18px 24px 8px;
-      }
-      .eyebrow {
-        letter-spacing: 0.35em;
-        font-size: 12px;
-        color: #80879a;
-        text-transform: uppercase;
-      }
-      .title {
-        font-family: "Playfair Display", serif;
-        font-weight: 700;
-        font-size: clamp(28px, 5vw, 40px);
-        margin: 6px 0 6px;
-      }
-      .subtitle {
-        color: #848b9c;
-        margin: 0 0 8px;
-      }
+  /* Header */
+  header.page {
+    max-width: var(--max);
+    margin: 22px auto 0;
+    padding: 18px 24px 8px;
+  }
+  .eyebrow {
+    letter-spacing: 0.35em;
+    font-size: 12px;
+    color: rgba(147, 168, 211, 0.75);
+    text-transform: uppercase;
+  }
+  .title {
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 40px);
+    margin: 6px 0 6px;
+  }
+  .subtitle {
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
 
-      /* Layout */
-      main {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 0 24px 40px;
-      }
-      section {
-        padding: 22px 0;
-        border-top: 1px solid var(--rule);
-      }
-      section h2 {
-        margin: 0 0 6px;
-        font-size: 22px;
-      }
+  /* Layout */
+  main {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px 40px;
+  }
+  section {
+    padding: 26px 0;
+    border-top: 1px solid var(--rule);
+  }
+  section:first-of-type {
+    border-top: none;
+  }
 
-      /* Form */
-      form {
-        max-width: 720px;
-      }
-      .row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-      @media (max-width: 720px) {
-        .row {
-          grid-template-columns: 1fr;
-        }
-      }
-      label {
-        display: block;
-        font-weight: 600;
-        margin: 10px 0 6px;
-      }
-      input,
-      textarea {
-        width: 100%;
-        padding: 0.7rem 0.75rem;
-        border: 1px solid #d9dbe3;
-        border-radius: 10px;
-        font: inherit;
-        color: inherit;
-        background: #fff;
-      }
-      textarea {
-        min-height: 160px;
-        resize: vertical;
-      }
-      input:focus,
-      textarea:focus {
-        outline: none;
-        border-color: #b9bed1;
-        box-shadow: 0 0 0 3px #e9edf7;
-      }
-      .actions {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 12px;
-      }
-      .btn {
-        display: inline-block;
-        padding: 0.65rem 1rem;
-        border: 1px solid #d9dbe3;
-        border-radius: 10px;
-        text-decoration: none;
-        color: #1e2a3e;
-        font-weight: 600;
-        background: #fff;
-        cursor: pointer;
-      }
-      .btn.primary {
-        background: #0b66ff;
-        border-color: #0b66ff;
-        color: #fff;
-      }
-      .btn.primary:hover {
-        filter: brightness(0.95);
-      }
-      .btn:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-      }
+  /* Form */
+  form {
+    max-width: 720px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 720px) {
+    .row {
+      grid-template-columns: 1fr;
+    }
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin: 10px 0 6px;
+  }
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.7rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font: inherit;
+    color: var(--ink);
+    background: var(--surface-alt);
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(244, 246, 255, 0.6);
+  }
+  textarea {
+    min-height: 160px;
+    resize: vertical;
+  }
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(125, 182, 255, 0.2);
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.65rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 600;
+    background: var(--surface-solid);
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+  }
+  .btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #04101f;
+  }
+  .btn.primary:hover {
+    filter: brightness(1.05);
+  }
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
 
-      .note {
-        color: #6c7383;
-        font-size: 0.95rem;
-        margin-top: 8px;
-      }
-      .success {
-        display: none;
-        margin-top: 10px;
-        padding: 10px 12px;
-        border: 1px solid #d9eed2;
-        background: #f3fbf1;
-        color: #2a6b2a;
-        border-radius: 8px;
-      }
-      .error {
-        display: none;
-        margin-top: 10px;
-        padding: 10px 12px;
-        border: 1px solid #f1d1d1;
-        background: #fff5f5;
-        color: #8a2e2e;
-        border-radius: 8px;
-      }
+  .note {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-top: 8px;
+  }
+  .note code {
+    padding: 0 4px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .success {
+    display: none;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border: 1px solid rgba(46, 204, 113, 0.35);
+    background: rgba(46, 204, 113, 0.15);
+    color: #a6f6ce;
+    border-radius: 8px;
+  }
+  .error {
+    display: none;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    background: rgba(239, 68, 68, 0.18);
+    color: #f7b0b0;
+    border-radius: 8px;
+  }
 
-      /* Info + socials */
-      .sidebar {
-        color: #6c7383;
-      }
-      .socials {
-        display: flex;
-        gap: 14px;
-        margin-top: 8px;
-      }
-      .socials a {
-        color: #1e2a3e;
-        text-decoration: none;
-      }
-      .socials a:hover {
-        color: var(--link);
-      }
-      .ico {
-        width: 18px;
-        height: 18px;
-        display: inline-block;
-        vertical-align: text-bottom;
-      }
+  /* Info + socials */
+  .sidebar {
+    color: var(--muted);
+  }
+  .socials {
+    display: flex;
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .socials a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .socials a:hover {
+    color: var(--accent);
+  }
+  .ico {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: text-bottom;
+  }
 
-      /* Footer */
-      footer {
-        max-width: var(--max);
-        margin: 20px auto 26px;
-        padding: 0 24px;
-        color: #8a8f9e;
-        font-size: 12px;
-        text-align: center;
-      }
-    </style>
+  /* Footer */
+  footer {
+    max-width: var(--max);
+    margin: 20px auto 26px;
+    padding: 0 24px;
+    color: rgba(154, 163, 197, 0.7);
+    font-size: 12px;
+    text-align: center;
+  }
+</style>
+
   </head>
   <body>
     <!-- NAV -->
@@ -272,6 +293,8 @@
           <a href="index.html">Home</a>
           <a href="projects.html">Projects</a>
           <a href="about.html">About Me</a>
+          <a href="community.html">Community Engagement</a>
+          <a href="gallery.html">My Gallery</a>
           <a href="contact.html" aria-current="page">Contact Me</a>
         </nav>
       </div>
@@ -312,21 +335,12 @@
                 placeholder="you@example.com"
               />
 
-              <label for="subject">Subject *</label>
-              <input
-                id="subject"
-                name="subject"
-                type="text"
-                required
-                placeholder="How can I help?"
-              />
-
               <label for="message">Message *</label>
               <textarea
                 id="message"
                 name="message"
                 required
-                placeholder="Tell me a bit about your project…"
+                placeholder="Tell me a bit about your project..."
               ></textarea>
 
               <!-- Honeypot anti-spam (leave empty) -->
@@ -351,29 +365,27 @@
                 ></button>
               </div>
 
-              <div class="note">
-                This form opens your email app using <code>mailto:</code>. If
-                nothing happens, use “Copy text” and email me directly.
-              </div>
+              <!--<div class="note">
+                This form opens your email app using <code>mailto:</code>. If nothing
+                happens, use "Copy text" and email me directly.
+              </div>-->
               <div class="success" id="ok">
                 Message ready in your email app. You can edit before sending.
               </div>
               <div class="error" id="err">
-                Please fill the required fields (Name, Email, Subject, Message).
+                Please fill the required fields (Name, Email, Message).
               </div>
             </form>
           </div>
 
           <!-- INFO -->
           <aside class="sidebar">
-            <h2>Direct</h2>
+            <h2></h2>
             <p>
-              <strong>Email:</strong>
-              <a href="mailto:vincentchirchir53@gmail.com"
-                >vincentchirchir53@gmail.com</a
-              >
+              <strong></strong>
+              <a href="mailto:"></a>
             </p>
-            <p><strong>Location:</strong> Calgary, Alberta</p>
+            <p><strong></strong></p>
 
             <h2 style="margin-top: 14px">Find me online</h2>
             <div class="socials" aria-label="Find me online">
@@ -462,14 +474,14 @@
 
           const name = form.name.value.trim();
           const email = form.email.value.trim();
-          const subject = form.subject.value.trim();
           const message = form.message.value.trim();
 
-          if (!name || !email || !subject || !message) {
+          if (!name || !email || !message) {
             err.style.display = "block";
             return;
           }
           const to = "vincentchirchir53@gmail.com"; // TODO: set your real email
+          const subject = `Portfolio inquiry from ${name}`;
           const body = `From: ${name} <${email}>\n\n${message}`;
           const link = `mailto:${to}?subject=${q(subject)}&body=${q(body)}`;
 
@@ -483,9 +495,11 @@
           err.style.display = "none";
           const name = form.name.value.trim() || "(no name)";
           const email = form.email.value.trim() || "(no email)";
-          const subject = form.subject.value.trim() || "(no subject)";
           const message = form.message.value.trim() || "(no message)";
-          const text = `To: vincentchirchir53@gmail.com\nSubject: ${subject}\n\nFrom: ${name} <${email}>\n\n${message}`;
+          const subjectLine = form.name.value.trim()
+            ? `Portfolio inquiry from ${form.name.value.trim()}`
+            : "Portfolio inquiry";
+          const text = `To: vincentchirchir53@gmail.com\nSubject: ${subjectLine}\n\nFrom: ${name} <${email}>\n\n${message}`;
           try {
             await navigator.clipboard.writeText(text);
             ok.textContent = "Copied to clipboard. Paste into your email app.";

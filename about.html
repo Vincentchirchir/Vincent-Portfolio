@@ -11,217 +11,242 @@
       rel="stylesheet"
     />
 
-    <style>
-      :root {
-        --ink: #0e1220;
-        --sub: #667085;
-        --rule: #e7e7ea;
-        --link: #0b66ff;
-        --max: 1100px;
-        --navh: 68px;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        overflow-x: hidden;
-      }
-      body {
-        font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
-        color: var(--ink);
-        background: #fff;
-      }
+    
+<style>
+  :root {
+    --bg: #1B2431;
+    --surface: rgba(255, 255, 255, 0.08);
+    --surface-solid: #2a3242;
+    --ink: #f7f8fc;
+    --muted: #cbd3e3;
+    --rule: rgba(255, 255, 255, 0.2);
+    --accent: #7db6ff;
+    --link: #d2e4ff;
+    --max: 1100px;
+    --navh: 68px;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    margin: 0;
+    overflow-x: hidden;
+  }
+  body {
+    font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+  }
+  a {
+    color: inherit;
+  }
 
-      /* NAV (solid dark, like work.html) */
-      .nav-wrap {
-        position: sticky;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: var(--navh);
-        z-index: 30;
-        background: #0b0b0c;
-        border-bottom: 1px solid #1f1f22;
-      }
-      .nav {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 0 24px;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .left {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .avatar {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 1px solid rgba(255, 255, 255, 0.35);
-      }
-      .brand {
-        font-family: "Playfair Display", serif;
-        letter-spacing: 0.16em;
-        font-size: 18px;
-      }
-      .brand a {
-        color: #fff;
-        text-decoration: none;
-      }
-      .menu {
-        display: flex;
-        gap: 28px;
-      }
-      .menu a {
-        color: #f3f4f6;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 14px;
-        letter-spacing: 0.06em;
-      }
-      .menu a:hover {
-        opacity: 0.9;
-      }
+  /* NAV */
+  .nav-wrap {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--navh);
+    z-index: 30;
+    background: rgba(27, 36, 49, 0.9);
+    border-bottom: 1px solid var(--rule);
+    backdrop-filter: blur(10px);
+  }
+  .nav {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+  }
+  .brand {
+    font-family: "Playfair Display", serif;
+    letter-spacing: 0.16em;
+    font-size: 18px;
+  }
+  .brand a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .menu {
+    display: flex;
+    gap: 28px;
+  }
+  .menu a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+  }
+  .menu a:hover {
+    color: var(--accent);
+  }
 
-      /* Header area */
-      header.page {
-        max-width: var(--max);
-        margin: 22px auto 0;
-        padding: 18px 24px 8px;
-      }
-      .eyebrow {
-        letter-spacing: 0.35em;
-        font-size: 12px;
-        color: #80879a;
-        text-transform: uppercase;
-      }
-      .title {
-        font-family: "Playfair Display", serif;
-        font-weight: 700;
-        font-size: clamp(28px, 5vw, 40px);
-        margin: 6px 0 6px;
-      }
-      .subtitle {
-        color: #848b9c;
-        margin: 0 0 8px;
-      }
+  /* Header area */
+  header.page {
+    max-width: var(--max);
+    margin: 22px auto 0;
+    padding: 18px 24px 8px;
+  }
+  .eyebrow {
+    letter-spacing: 0.35em;
+    font-size: 12px;
+    color: rgba(147, 168, 211, 0.75);
+    text-transform: uppercase;
+  }
+  .title {
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 40px);
+    margin: 6px 0 6px;
+  }
+  .subtitle {
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
 
-      /* Layout */
-      main {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 0 24px 40px;
-      }
-      section {
-        padding: 22px 0;
-        border-top: 1px solid var(--rule);
-      }
-      section h2 {
-        margin: 0 0 6px;
-        font-size: 22px;
-      }
-      p {
-        margin: 0 0 10px;
-        line-height: 1.8;
-      }
-      ul {
-        margin: 6px 0 0 18px;
-      }
-      li {
-        margin: 6px 0;
-      }
+  /* Layout */
+  main {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px 40px;
+  }
+  section {
+    padding: 26px 0;
+    border-top: 1px solid var(--rule);
+  }
+  section:first-of-type {
+    border-top: none;
+  }
+  section h2 {
+    margin: 0 0 10px;
+    font-size: 22px;
+  }
+  p {
+    margin: 0 0 10px;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+  strong {
+    color: var(--ink);
+  }
+  ul {
+    margin: 6px 0 0 18px;
+    color: var(--muted);
+  }
+  li {
+    margin: 6px 0;
+  }
 
-      /* Intro block with photo */
-      .intro {
-        display: grid;
-        grid-template-columns: 140px 1fr;
-        gap: 18px;
-        align-items: start;
-      }
-      .intro .photo {
-        width: 140px;
-        height: 140px;
-        border-radius: 14px;
-        object-fit: cover;
-        border: 1px solid #e8e9ee;
-        background: #f5f6f8;
-      }
-      @media (max-width: 700px) {
-        .intro {
-          grid-template-columns: 1fr;
-        }
-        .intro .photo {
-          width: 100%;
-          height: 220px;
-        }
-      }
+  /* Intro block with photo */
+  .intro {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+  .intro .photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: var(--surface-solid);
+  }
+  @media (max-width: 700px) {
+    .intro {
+      grid-template-columns: 1fr;
+    }
+    .intro .photo {
+      width: 100%;
+      height: 220px;
+    }
+  }
 
-      /* Chips */
-      .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 6px;
-      }
-      .chip {
-        font-size: 0.95rem;
-        padding: 0.25rem 0.55rem;
-        border: 1px solid #e0e1e6;
-        border-radius: 999px;
-      }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .chip {
+    font-size: 0.95rem;
+    padding: 0.25rem 0.55rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: var(--surface-solid);
+  }
 
-      /* Two-column lists */
-      .cols {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
-      @media (max-width: 800px) {
-        .cols {
-          grid-template-columns: 1fr;
-        }
-      }
 
-      /* Footer */
-      footer {
-        max-width: var(--max);
-        margin: 20px auto 26px;
-        padding: 0 24px;
-        color: #8a8f9e;
-        font-size: 12px;
-        text-align: center;
-      }
-      a.inline {
-        color: var(--link);
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-      .btns {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-top: 8px;
-      }
-      .btn {
-        display: inline-block;
-        padding: 0.55rem 0.85rem;
-        border: 1px solid #d9dbe3;
-        border-radius: 10px;
-        text-decoration: none;
-        color: #1e2a3e;
-        font-weight: 600;
-      }
-      .btn:hover {
-        border-color: #b9bed1;
-      }
-    </style>
+  @media (max-width: 800px) {
+    .cols {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 18px 0;
+  }
+
+  .btns {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--surface-solid);
+    font-weight: 600;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+  }
+
+  footer {
+    max-width: var(--max);
+    margin: 20px auto 26px;
+    padding: 0 24px;
+    color: rgba(154, 163, 197, 0.7);
+    font-size: 12px;
+    text-align: center;
+  }
+  a.inline {
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  a.inline:hover {
+    color: #cfe0ff;
+  }
+</style>
+
   </head>
   <body>
     <!-- NAV -->
@@ -239,6 +264,8 @@
           <a href="index.html">Home</a>
           <a href="projects.html">Projects</a>
           <a href="about.html" aria-current="page">About Me</a>
+          <a href="community.html">Community Engagement</a>
+          <a href="gallery.html">My Gallery</a>
           <a href="contact.html">Contact Me</a>
         </nav>
       </div>
@@ -265,18 +292,38 @@
           />
           <div>
             <h2>Profile</h2>
-            <p>
-              I focus on spatial analysis and municipal asset management. I
-              supported the Municipality of Chatham-Kent with field data
-              collection and QA for trees, fire hydrants, bus stops/shelters,
-              and parking assets—turning field data into decision-ready layers
-              and dashboards.
-            </p>
-            <p>
-              I also build tools—most recently <strong>Fieldmax Shop</strong>, a
-              POS & inventory web app (Django/Flask + PostgreSQL) with FIFO
-              stock and role-based dashboards.
-            </p>
+        <p>
+          I am Vincent Chirchir, dedicated and ambitious profesional with background in Geoinformation Technology, Survey, Data Science, and Youth leadership.
+          I have a degree in Geoinformaion Technology from <strong>Technical Univeristy of Kenya</strong>. 
+          Currently, I am a Geographic Information Systems (GIS) student at the <strong>Southern Alberta Institute of Technology (SAIT)</strong>,
+          focused on spatial analysis, GIS development, and building practical tools that make data useful.
+          </p>
+
+          <p>
+          Professionally, I have contributed to diverse projects where recently, during my practicum with the Municipality of Chatham-Kent’s Asset Management Department, I collected and
+          analyzed asset data (trees, fire hydrants, traffic signals, parking assets, bus shelters & stops) and helped
+          translate field data into decision-ready insights.
+          I also contributed to <strong>Fibre Cable Design</strong> with SOULCO where I applied AutoCAD in planning last-mile and backbone connectvity across 47 counties in Kenya.
+          As <strong>Data Analyst Instructor at Idata Analystics Hub</strong> I conducted educational sessions on Python for data sciece equipping learners with valuable coding skills.
+          My practical experience also extends to <strong>Land Surveying</strong> at <strong>Ardhi House Eldoret</strong> where I gained my skills in  topographic surveys, boundary surveys, and land measurements 
+          using advanced surveying equipment and technologies.My time at Ardhi House Eldoret provided me with a comprehensive understanding of the practical 
+          aspects of land surveying, as well as exposure to the importance of precise data collection and 
+          documentation. This experience has enhanced my ability to contribute effectively to surveying projects 
+          and further solidified my passion for geospatial analysis and spatial data management. 
+        </p>
+        <P>
+          Beyond professional expertise, I am passionate about community empowerment and Youth Governance. In 2022, I was elected as a county Commisar of the Liberal Youth Movement whereI championed
+          initiatives that engage, mentor, and mobilize youth, fostering personal growth, civic participation, and access to opportunities. <br>I am also founder and chairperon of <strong>Tambul Hustle Youth Group</strong>,
+          I have played an instrumental role in building a community-driven platform that empowers youth through collective action, entrepreneurship, and financial inclusion. 
+          The group unites 21 members from our community, focusing on savings, small business support, and social development projects.
+        </P>
+        <p>
+          I have also developed personal project and one of them is <strong>Fieldmax Shop</strong>—a custom sales & inventory system
+          using Flask/Django and PostgreSQL (with FIFO stock and dashboards). Fieldmax is a personal project I conceptualized, designed, 
+          and developed to solve real challenges faced in small business management. As an upcoming developer, 
+          I wanted to create a platform that automates inventory, sales logging, and 
+          profit tracking — providing small retailers like myself with tools that are typically only available to larger businesses
+        </p>
             <div class="btns">
               <a class="btn" href="docs/Vincent Chirchir Resume.pdf" download
                 >Download Resume (PDF)</a
@@ -295,7 +342,8 @@
           </div>
         </div>
       </section>
-
+      <!--Goals-->
+      
       <!-- Skills -->
       <section>
         <h2>Skills</h2>
@@ -321,8 +369,8 @@
           <div>
             <h2>Experience</h2>
             <p>
-              <strong>GIS Student/Data Collection </strong> — Municipality of
-              Chatham-Kent
+              <strong>GIS Student/Data Collection — Municipality of
+              Chatham-Kent</strong>
             </p>
             <ul>
               <li>
@@ -333,7 +381,53 @@
                 Prepared datasets for dashboards and departmental planning.
               </li>
             </ul>
-            <p><strong>Developer</strong> — Fieldmax Shop (personal project)</p>
+            <p>
+              <strong>Survey and Design — SOULCO</strong> 
+            </p>
+            <ul>
+              <li>
+                Designed and planned the routr of fiber cables, ensuring optimal connectivity
+              </li>
+              <li>
+                Created detailed and technical drawings, blueprints, and 
+                schematics for the fiber cable, adhering to industry standards and best practices.
+              </li>
+              <li>
+                 Did project documentation, including project plans, progress 
+                  reports, and technical specifications.
+              </li>
+            </ul>
+            <p>
+              <strong>Instructor — Idata Analytics Hub</strong> 
+            </p>
+            <ul>
+              <li>
+                Conducted educational sessions on Python programming for data science, equipping team members with 
+                valuable coding skills and fostering a culture of continuous learning within the organization.
+              </li>
+              <li>
+                 Actively participated in brainstorming sessions to generate innovative ideas for data-driven storytelling, 
+                 contributing to the development of compelling narratives and visualizations for client presentations. 
+              </li>
+            </ul>
+            <p>
+              <strong>Practicum/Attachment — Ministry of Lands, Ardhi House</strong> 
+            </p>
+            <ul>
+              <li>
+                Assisted senior surveyors in conducting topographic surveys, boundary surveys, and land measurements 
+                using advanced surveying equipment and technologies
+              </li>
+              <li>
+                 Supported the preparation of legal documents and survey reports, ensuring compliance with regulatory 
+                 standards and accurately representing survey findings.
+              </li>
+              <li>
+                Contributed to data processing and analysis, utilizing specialized software to transform raw field data 
+                into detailed and accurate survey maps and reports.
+              </li>
+            </ul>
+            <p><strong>Junior Developer — Fieldmax Shop (personal project)</strong> </p>
             <ul>
               <li>
                 Django/Flask + PostgreSQL POS & inventory with FIFO and
@@ -342,22 +436,28 @@
             </ul>
           </div>
           <div>
+            <hr>
             <h2>Education</h2>
             <p>
               <strong>Southern Alberta Institute of Technology (SAIT)</strong
-              ><br />Bachelor of Applied GIS
+              ><br />Bachelor of Applied Geographic Information Systems(GIS)
             </p>
-
-            <h2 style="margin-top: 14px">Highlights</h2>
+            <p>
+              <strong>Technical University of Kenya (TUK)</strong
+              ><br />Bachelor of Geoinformation Technology
+            </p>
+            <hr>
+            <h2 style="margin-top: 14px">Goals</h2>
             <ul>
-              <li>Municipal asset data quality & reporting</li>
-              <li>Retail systems (POS/inventory) with spatial insights</li>
-              <li>Turning messy datasets into usable maps & APIs</li>
+              <li>Deepen my expertise in GIS analysis, Python automation, and data-driven decision-making</li>
+              <li>Earn Key Certifications</li>
+              <li>Take Tambul Hustle Youth Group to the next Level</li>
+              <li>Take on mentorship/youth leadership programs</li>
+              <li>Establish a Youth Tech Hub in Kenya to train young people in varous issues (more consulation to be done)</li>
             </ul>
           </div>
         </div>
       </section>
-
       <!-- Links -->
       <section>
         <h2>Links</h2>

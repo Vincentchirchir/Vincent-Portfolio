@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fieldmax</title>
+  <link rel="icon" type="image/jpg" href="pictures/icon.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#1b2431;          /* Match rest of site */
+      --panel:#111a2b;       /* Card surface */
+      --muted:#a8b3cf;       /* Secondary text */
+      --text:#ecf1ff;        /* Primary text */
+      --brand:#3aa0ff;       /* Accent (blue) */
+      --brand-2:#86e7ff;     /* Secondary accent */
+      --ok:#22c55e;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+      --ring: 0 0 0 8px #3aa0ff15;
+      --radius: 18px;
+      --shadow: 0 10px 30px -10px rgba(0,0,0,.55), 0 2px 10px -6px rgba(0,0,0,.6);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--text);}
+    a{color:var(--brand); text-decoration:none}
+    .container{max-width:1080px; margin:0 auto; padding:24px}
+
+    /* Header */
+    .hero{position:relative; padding:72px 0 36px;}
+    .title{font-size: clamp(28px, 6vw, 56px); line-height:1.05; margin:0 0 8px; font-weight:800; letter-spacing:-.02em;}
+    .subtitle{color:var(--muted); font-size: clamp(14px, 2.5vw, 18px); max-width:780px}
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px}
+    .chip{background:linear-gradient(180deg, #17233a, #111a2b); border:1px solid #223355; color:#cfe1ff; padding:8px 12px; border-radius:999px; font-size:13px; display:inline-flex; align-items:center; gap:8px}
+    .chip svg{width:16px; height:16px}
+
+    /* Panel cards */
+    .grid{display:grid; gap:20px; grid-template-columns:repeat(12,1fr);}
+    .card{grid-column: span 12; background:linear-gradient(180deg,#121b2d,#0d1627); border:1px solid #26324a; border-radius:var(--radius); padding:20px; box-shadow:var(--shadow)}
+    .card h3{margin:0 0 10px; font-size:20px}
+    .card p{margin:0; color:var(--muted)}
+    @media(min-width:900px){
+      .span-4{grid-column:span 4}
+      .span-6{grid-column:span 6}
+      .span-8{grid-column:span 8}
+      .span-12{grid-column:span 12}
+    }
+
+    /* Sections */
+    section{margin:36px 0}
+    .section-title{font-size:22px; font-weight:700; margin:0 0 14px}
+    .muted{color:var(--muted)}
+
+    /* Feature list */
+    .features{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
+    .feature{grid-column:span 12; background:linear-gradient(180deg,#121b2d,#0e182a); border:1px solid #26324a; border-radius:16px; padding:16px}
+    .feature h4{margin:0 0 6px}
+    .feature small{color:var(--muted)}
+    @media(min-width:900px){.feature{grid-column:span 6}}
+
+    /* Timeline */
+    .timeline{position:relative; padding-left:24px}
+    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:linear-gradient(var(--brand),transparent)}
+    .t-item{position:relative; margin:18px 0; padding-left:8px}
+    .t-item::before{content:""; position:absolute; left:-4px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--brand)}
+    .t-item h5{margin:0 0 4px}
+    .t-item p{margin:0; color:var(--muted)}
+
+    /* Tech badges */
+    .badges{display:flex; flex-wrap:wrap; gap:10px}
+    .badge{border:1px solid #2a3b5f; background:#0e1729; border-radius:12px; padding:10px 12px; font-size:13px}
+
+    /* KPI cards */
+    .kpis{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
+    .kpi{grid-column:span 12; background:linear-gradient(180deg,#101a2c,#0b1425); border:1px solid #26324a; border-radius:14px; padding:16px}
+    .kpi .value{font-size:28px; font-weight:800; letter-spacing:-.02em}
+    .kpi .label{color:var(--muted)}
+    @media(min-width:900px){.kpi{grid-column:span 3}}
+
+    /* Gallery */
+    .gallery{display:grid; grid-template-columns:repeat(12,1fr); gap:12px}
+    .shot{grid-column:span 12; border-radius:16px; overflow:hidden; border:1px solid #2a3b5f; background:linear-gradient(180deg,#0f1830,#0a1323); aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; color:#8fb8ff}
+    @media(min-width:900px){.shot{grid-column:span 6}}
+
+    /* CTA */
+    .cta{display:flex; flex-wrap:wrap; gap:12px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid #2a3b5f; background:#0d1627; color:var(--text); cursor:pointer; transition:.2s transform, .2s box-shadow}
+    .btn:hover{transform:translateY(-2px); box-shadow:var(--ring)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),#2cc1ff); color:#071528; font-weight:700}
+
+    /* Sticky subnav */
+    .subnav{position:sticky; top:0; backdrop-filter: blur(10px); background:#0b1220cc; border-bottom:1px solid #1f2a41; z-index:5}
+    .subnav-inner{max-width:1080px; margin:0 auto; padding:10px 24px; display:flex; gap:14px; overflow:auto}
+    .subnav a{color:#cfe1ff; opacity:.85; font-size:14px; padding:8px 12px; border-radius:999px; border:1px solid transparent}
+    .subnav a:hover{border-color:#2a3b5f}
+
+    /* Foot */
+    footer{padding:40px 0; color:#93a7cc}
+      /* Lightbox */
+    .lightbox-overlay{position:fixed; inset:0; background:rgba(3,8,18,.85); display:none; align-items:center; justify-content:center; z-index:50}
+    .lightbox-overlay.active{display:flex}
+    .lightbox-img{max-width:92vw; max-height:88vh; border-radius:16px; border:1px solid #2a3b5f; box-shadow:var(--shadow)}
+    .lightbox-controls{position:fixed; inset:0; display:flex; align-items:center; justify-content:space-between; padding:24px}
+    .lb-btn{background:#0d1627; border:1px solid #2a3b5f; color:#ecf1ff; padding:10px 12px; border-radius:12px; cursor:pointer}
+    .lb-close{position:fixed; top:16px; right:16px}
+  </style>
+</head>
+<body>
+  <div class="subnav">
+    <div class="subnav-inner">
+      <a href="#overview">Overview</a>
+      <a href="#features">Features</a>
+      <a href="#tech">Tech Stack</a>
+      <a href="#timeline">Build Timeline</a>
+      <a href="#impact">Impact</a>
+      <a href="#gallery">Screenshots</a>
+      <a href="#next">What’s Next</a>
+    </div>
+  </div>
+
+  <header class="hero container">
+    <h1 class="title">Fieldmax – Sales & Inventory System</h1>
+    <p class="subtitle">A custom retail platform I designed and developed to replace manual records with real‑time stock control, role‑based sales entry, accurate FIFO‑based profit, and a KPI dashboard. Built for day‑to‑day shop operations and future integrations.</p>
+    <div class="chips">
+      <span class="chip" title="Live metrics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 15l3-3 4 4 5-8"/></svg> Real‑time KPIs</span>
+      <span class="chip" title="Inventory logic">FIFO Profit</span>
+      <span class="chip" title="User roles">Role‑Based Access</span>
+      <span class="chip" title="DB">PostgreSQL</span>
+      <span class="chip" title="Kenya TZ">Africa/Nairobi TZ</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- KPIs quick glance (optional static placeholders) -->
+    <section aria-labelledby="impact-kpis" id="overview">
+      <h2 id="impact-kpis" class="section-title">Quick Glance</h2>
+      <div class="kpis">
+        <div class="kpi"><div class="value">✔ Automated</div><div class="label">Replaced manual logs</div></div>
+        <div class="kpi"><div class="value">FIFO</div><div class="label">Accurate profit by batches</div></div>
+        <div class="kpi"><div class="value">RBAC</div><div class="label">Admin & Assistant flows</div></div>
+        <div class="kpi"><div class="value">TZ‑Aware</div><div class="label">Sales reset on local time</div></div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section aria-labelledby="feat" id="features">
+      <h2 id="feat" class="section-title">Key Features</h2>
+      <div class="features">
+        <div class="feature"><h4>Product Upload & Stock Control</h4><small>Create/update items, manage all/in‑stock counts, guard rails with FK constraints.</small></div>
+        <div class="feature"><h4>Sales Recording with Auto‑Fill</h4><small>Type an item code to auto‑populate name/prices; validates quantity; updates stock.</small></div>
+        <div class="feature"><h4>FIFO Profit Engine</h4><small>Batch‑aware <em>StockEntry</em> logic ensures profit reflects purchase history.</small></div>
+        <div class="feature"><h4>Role‑Based Access (RBAC)</h4><small>Admins see dashboard & product tools; assistants only record sales.</small></div>
+        <div class="feature"><h4>Dashboard & Alerts</h4><small>Revenue, profit, top items, latest sales, and low‑stock alerts at a glance.</small></div>
+        <div class="feature"><h4>Timezone‑Aware Reporting</h4><small>Daily/weekly/monthly rollups aligned to <strong>Africa/Nairobi</strong> & week starts Sunday.</small></div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section aria-labelledby="tech" id="tech">
+      <h2 class="section-title">Technology</h2>
+      <div class="card span-12">
+        <div class="badges">
+          <span class="badge">Python (Flask → Django)</span>
+          <span class="badge">PostgreSQL</span>
+          <span class="badge">HTML</span>
+          <span class="badge">CSS</span>
+          <span class="badge">Bootstrap 5</span>
+          <span class="badge">Git & GitHub</span>
+          <span class="badge">Render (DB hosting)</span>
+          <span class="badge">Timezone utils</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Build Timeline -->
+    <section aria-labelledby="timeline" id="timeline">
+      <h2 class="section-title">Build Timeline</h2>
+      <div class="card span-12 timeline">
+        <div class="t-item">
+          <h5>Ideation & Specs</h5>
+          <p>Outlined problems (manual logs, profit mismatch), drafted data model and screens.</p>
+        </div>
+        <div class="t-item">
+          <h5>Flask Prototype → PostgreSQL</h5>
+          <p>Created products & sales tables, basic forms, and a starter dashboard.</p>
+        </div>
+        <div class="t-item">
+          <h5>FIFO Inventory</h5>
+          <p>Added <em>StockEntry</em> table and batch depletion for accurate profit.</p>
+        </div>
+        <div class="t-item">
+          <h5>Django Migration</h5>
+          <p>Introduced RBAC, template cleanup, and modular views for dashboard.</p>
+        </div>
+        <div class="t-item">
+          <h5>TZ‑Aware KPIs</h5>
+          <p>Aligned daily/weekly/monthly stats with Africa/Nairobi; week starts Sunday.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact narrative -->
+    <section aria-labelledby="impact" id="impact">
+      <h2 class="section-title">Impact</h2>
+      <div class="grid">
+        <div class="card span-6">
+          <h3>Operational Efficiency</h3>
+          <p class="muted">Reduced manual errors and time by centralizing sales & inventory, enabling faster daily close.</p>
+        </div>
+        <div class="card span-6">
+          <h3>Data‑Driven Decisions</h3>
+          <p class="muted">Real‑time low‑stock alerts and revenue/profit KPIs inform restocking and pricing.</p>
+        </div>
+        <div class="card span-6">
+          <h3>Access Control</h3>
+          <p class="muted">Assistants record sales securely without visibility into sensitive analytics.</p>
+        </div>
+        <div class="card span-6">
+          <h3>Scalable Foundation</h3>
+          <p class="muted">Ready for M‑Pesa/SMS receipts, multi‑branch, and richer analytics.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery placeholders -->
+    <section aria-labelledby="gallery" id="gallery">
+      <h2 class="section-title">Screenshots</h2>
+      <div class="gallery">
+        <!-- Replace src paths with your real files under assets/screenshots/ -->
+        <a class="shot" href="project images/stock levels fieldmax.png" data-shot="0" title="Stock Level">
+          <img src="project images/stock levels fieldmax.png" alt="Stock Level" style="width:100%;height:auto;"/>
+        </a>
+        <a class="shot" href="project images/record sale fieldmax.png" data-shot="1" title="Record Sale – item code auto‑fill">
+          <img src="project images/record sale fieldmax.png" alt="Record Sale – item code auto‑fill" style="width:100%;height:auto;"/>
+        </a>
+        <a class="shot" href="project images/upload product fieldmax.png" data-shot="2" title="Upload Product – form & validation">
+          <img src="project images/upload product fieldmax.png" alt="Upload Product – form & validation" style="width:100%;height:auto;"/>
+        </a>
+        <a class="shot" href="project images/user login fieldmax.png" data-shot="3" title="User Login – Admin vs Assistant">
+          <img src="project images/user login fieldmax.png" alt="User Login – Admin vs Assistant" style="width:100%;height:auto;"/>
+        </a>
+      </div>
+    </section>
+
+    <!-- Next steps -->
+    <section aria-labelledby="next" id="next">
+      <h2 class="section-title">What’s Next</h2>
+      <div class="grid">
+        <div class="card span-12">
+          <ul>
+            <li>Mobile‑first quick sale screen & barcode scan</li>
+            <li>Multi‑branch support with branch‑level KPIs</li>
+            <li>SMS/Email receipts & alerts (M‑Pesa integration)</li>
+            <li>Forecasts & product mix optimization</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="muted">© <span id="y"></span> Vincent Chirchir</div>
+  </footer>
+
+  <script>
+    // Update year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <!-- Lightbox root -->
+  <div class="lightbox-overlay" id="lightbox" aria-modal="true" role="dialog">
+    <div class="lightbox-controls">
+      <button class="lb-btn" id="lbPrev" aria-label="Previous">◀</button>
+      <button class="lb-btn lb-close" id="lbClose" aria-label="Close">✕</button>
+      <button class="lb-btn" id="lbNext" aria-label="Next">▶</button>
+    </div>
+    <img class="lightbox-img" id="lbImg" alt="Screenshot preview" />
+  </div>
+
+  <script>
+    // Update year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Lightweight Lightbox
+    (function(){
+      const overlay = document.getElementById('lightbox');
+      const img = document.getElementById('lbImg');
+      const prev = document.getElementById('lbPrev');
+      const next = document.getElementById('lbNext');
+      const closeBtn = document.getElementById('lbClose');
+      const shots = Array.from(document.querySelectorAll('.gallery a.shot'));
+      let index = 0;
+
+      function open(i){ index=i; img.src = shots[index].getAttribute('href'); overlay.classList.add('active'); }
+      function close(){ overlay.classList.remove('active'); img.removeAttribute('src'); }
+      function step(dir){ index = (index + dir + shots.length) % shots.length; img.src = shots[index].getAttribute('href'); }
+
+      shots.forEach((a,i)=>{ a.addEventListener('click', (e)=>{ e.preventDefault(); open(i); }); });
+      overlay.addEventListener('click', (e)=>{ if(e.target===overlay) close(); });
+      closeBtn.addEventListener('click', close);
+      prev.addEventListener('click', ()=>step(-1));
+      next.addEventListener('click', ()=>step(1));
+      window.addEventListener('keydown', (e)=>{
+        if(!overlay.classList.contains('active')) return;
+        if(e.key==='Escape') close();
+        if(e.key==='ArrowRight') step(1);
+        if(e.key==='ArrowLeft') step(-1);
+      });
+    })();
+  </script>
+</body>
+</html>

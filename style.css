@@ -100,7 +100,7 @@
         height: 100%;
         object-fit: cover;
         object-position: 60% center;
-        filter: brightness(0.6) contrast(0.98) saturate(0.9) blur(0.7px);
+        filter: brightness(0.9) contrast(0.98) saturate(0.9) blur(0.7px);
       }
       .overlay {
         position: absolute;
@@ -202,3 +202,5 @@
           display: none;
         } /* hide text on small screens; keep icons */
       }
+
+      /*Projects*/
