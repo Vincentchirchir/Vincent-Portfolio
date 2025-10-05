@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="index.css" />
     <link rel="icon" type="image/jpg" href="pictures/icon.jpg" />
     <title>Vincent Chirchir — Portfolio</title>
 
@@ -15,7 +15,7 @@
     <style></style>
   </head>
   <body>
-    <header class="hero" id="top">
+    <header class="hero" id="top" class="site-header">
       <img class="bg" src="pictures/Home_bg2.jpg" alt="Background hero image" />
       <div class="overlay"></div>
 
@@ -29,7 +29,10 @@
             />
             <div class="brand"><a href="index.html">V. CHIRCHIR</a></div>
           </div>
-          <nav class="menu" aria-label="Primary">
+          <button class="nav-toggle" aria-expanded="false" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+          <nav class="menu" aria-label="Primary" class="nav" data-nav>
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
             <a href="about.html">About Me</a>
@@ -109,5 +112,13 @@
         if (y) y.textContent = new Date().getFullYear();
       });
     </script>
+    <script>
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('[data-nav]');
+  btn?.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+</script>
   </body>
 </html>

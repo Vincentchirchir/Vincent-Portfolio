@@ -21,6 +21,33 @@
       }
 
       /* NAV */
+      /* Nav layout */
+.nav-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+.brand { font-weight: 800; letter-spacing: .15em; text-decoration: none; }
+
+/* Desktop nav */
+.nav { display: flex; gap: 18px; }
+.nav a { text-decoration: none; padding: 8px 10px; border-radius: 10px; }
+
+/* Mobile: hide links behind toggle */
+.nav-toggle { display: none; background: none; border: 0; width: 44px; height: 44px; padding: 0; position: relative; }
+.nav-toggle span { position: absolute; left: 10px; right: 10px; height: 2px; background: currentColor; }
+.nav-toggle span:nth-child(1){ top: 14px; } 
+.nav-toggle span:nth-child(2){ top: 21px; } 
+.nav-toggle span:nth-child(3){ top: 28px; }
+
+@media (max-width: 900px){
+  .nav-toggle { display: inline-block; }
+  .nav { 
+    position: absolute; inset: 60px 16px auto 16px;
+    background: rgba(0,0,0,.7); backdrop-filter: blur(6px);
+    border: 1px solid #26324a; border-radius: 14px;
+    display: none; flex-direction: column; padding: 10px;
+  }
+  .nav a { padding: 12px; }
+  .nav.open { display: flex; }
+}
+
       .nav-wrap {
         position: fixed;
         top: 0;
@@ -100,7 +127,7 @@
         height: 100%;
         object-fit: cover;
         object-position: 60% center;
-        filter: brightness(0.9) contrast(0.98) saturate(0.9) blur(0.7px);
+        filter: brightness(0) contrast(0) saturate(0) blur(0.05);
       }
       .overlay {
         position: absolute;
@@ -200,7 +227,7 @@
         }
         .socbar .label {
           display: none;
-        } /* hide text on small screens; keep icons */
+        } 
       }
 
       /*Projects*/
