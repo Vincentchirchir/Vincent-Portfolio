@@ -12,12 +12,11 @@
       rel="stylesheet"
     />
 
-    <style></style>
   </head>
   <body>
     <!-- NAV -->
     <div class="nav-wrap">
-      <div class="nav">
+      <div class="nav-row">
         <div class="left">
           <img
             class="avatar"
@@ -26,7 +25,16 @@
           />
           <div class="brand"><a href="index.html">V. CHIRCHIR</a></div>
         </div>
-        <nav class="menu" aria-label="Primary">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-label="Menu"
+          aria-controls="primary-nav"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav" id="primary-nav" aria-label="Primary" data-nav>
           <a href="index.html">Home</a>
           <a href="projects.html">Projects</a>
           <a href="about.html">About Me</a>
@@ -181,14 +189,29 @@
     <footer>© <span id="year"></span> Vincent Chirchir</footer>
 
     <script>
-      // Year
       document.addEventListener("DOMContentLoaded", () => {
         const y = document.getElementById("year");
         if (y) y.textContent = new Date().getFullYear();
-      });
 
-      // Contact form: build a mailto link (no backend)
-      (function () {
+        const btn = document.querySelector(".nav-toggle");
+        const nav = document.querySelector("[data-nav]");
+        if (btn && nav) {
+          btn.addEventListener("click", () => {
+            const open = nav.classList.toggle("open");
+            btn.setAttribute("aria-expanded", String(open));
+          });
+
+          nav.addEventListener("click", (event) => {
+            const link =
+              event.target instanceof Element ? event.target.closest("a") : null;
+            if (!link || !nav.classList.contains("open")) return;
+
+            nav.classList.remove("open");
+            btn.setAttribute("aria-expanded", "false");
+          });
+        }
+
+        // Contact form: build a mailto link (no backend)
         const form = document.getElementById("contact-form");
         const ok = document.getElementById("ok");
         const err = document.getElementById("err");
@@ -246,7 +269,7 @@
             err.style.display = "block";
           }
         });
-      })();
+      });
     </script>
   </body>
 </html>

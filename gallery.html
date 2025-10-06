@@ -4,23 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Photo Stories – Vincent Chirchir</title>
-  <link rel="stylesheet" href="gallery.css"/>
+  <link rel="stylesheet" href="gallery.css" />
   <link rel="icon" type="image/jpg" href="pictures/icon.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-   
-  </style>
 </head>
 <body>
   <div class="nav-wrap">
-    <div class="nav">
+    <div class="nav-row">
       <div class="left">
         <img class="avatar" src="pictures/profile.jpg" alt="Vincent Chirchir">
         <div class="brand"><a href="index.html">V. CHIRCHIR</a></div>
       </div>
-      <nav class="menu" aria-label="Primary">
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-label="Menu"
+        aria-controls="primary-nav"
+      >
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary" data-nav>
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
         <a href="about.html">About Me</a>
@@ -91,47 +97,78 @@
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', () => {
+      const year = document.getElementById('y');
+      if (year) year.textContent = new Date().getFullYear();
 
-    // Open modal with details from data attributes
-    const modal = document.getElementById('modal');
-    const mTitle = document.getElementById('mTitle');
-    const mImg   = document.getElementById('mImg');
-    const mMeta  = document.getElementById('mMeta');
-    const mStory = document.getElementById('mStory');
-    const mTags  = document.getElementById('mTags');
-    const mClose = document.getElementById('mClose');
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('[data-nav]');
+      if (btn && nav) {
+        btn.addEventListener('click', () => {
+          const open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
 
-    function openStory(fig){
-      const img = fig.querySelector('img');
-      mTitle.textContent = fig.dataset.title || '';
-      mImg.src = img.src;
-      mImg.alt = img.alt || 'Story photo';
-      const loc = fig.dataset.location ? `📍 ${fig.dataset.location}` : '';
-      const date = fig.dataset.date ? `• ${fig.dataset.date}` : '';
-      mMeta.textContent = `${loc} ${date}`.trim();
-      mStory.textContent = fig.dataset.story || '';
-      // tags
-      mTags.innerHTML = '';
-      const tags = (fig.dataset.tags||'').split(',').map(t=>t.trim()).filter(Boolean);
-      tags.forEach(t=>{
-        const span = document.createElement('span');
-        span.className = 'pill';
-        span.textContent = t;
-        mTags.appendChild(span);
+        nav.addEventListener('click', (event) => {
+          const link = event.target instanceof Element ? event.target.closest('a') : null;
+          if (!link || !nav.classList.contains('open')) return;
+
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      const modal = document.getElementById('modal');
+      const mTitle = document.getElementById('mTitle');
+      const mImg = document.getElementById('mImg');
+      const mMeta = document.getElementById('mMeta');
+      const mStory = document.getElementById('mStory');
+      const mTags = document.getElementById('mTags');
+      const mClose = document.getElementById('mClose');
+      const photos = document.getElementById('photos');
+
+      if (!modal || !mTitle || !mImg || !mMeta || !mStory || !mTags || !mClose || !photos) {
+        return;
+      }
+
+      function openStory(fig) {
+        const img = fig.querySelector('img');
+        mTitle.textContent = fig.dataset.title || '';
+        if (img) {
+          mImg.src = img.src;
+          mImg.alt = img.alt || 'Story photo';
+        }
+        const loc = fig.dataset.location ? `📍 ${fig.dataset.location}` : '';
+        const date = fig.dataset.date ? `• ${fig.dataset.date}` : '';
+        mMeta.textContent = `${loc} ${date}`.trim();
+        mStory.textContent = fig.dataset.story || '';
+
+        mTags.innerHTML = '';
+        const tags = (fig.dataset.tags || '').split(',').map((t) => t.trim()).filter(Boolean);
+        tags.forEach((t) => {
+          const span = document.createElement('span');
+          span.className = 'pill';
+          span.textContent = t;
+          mTags.appendChild(span);
+        });
+
+        modal.classList.add('active');
+      }
+
+      photos.addEventListener('click', (event) => {
+        const fig = event.target instanceof Element ? event.target.closest('.photo') : null;
+        if (!fig) return;
+        openStory(fig);
       });
-      modal.classList.add('active');
-    }
 
-    document.getElementById('photos').addEventListener('click', (e)=>{
-      const fig = e.target.closest('.photo');
-      if(!fig) return;
-      openStory(fig);
+      mClose.addEventListener('click', () => modal.classList.remove('active'));
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) modal.classList.remove('active');
+      });
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') modal.classList.remove('active');
+      });
     });
-
-    mClose.addEventListener('click', ()=> modal.classList.remove('active'));
-    modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.classList.remove('active'); });
-    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') modal.classList.remove('active'); });
   </script>
 </body>
 </html>

@@ -37,7 +37,8 @@
     border-bottom: 1px solid var(--rule);
     backdrop-filter: blur(10px);
   }
-  .nav {
+  .nav-row {
+    position: relative;
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 24px;
@@ -45,6 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
   }
   .left {
     display: flex;
@@ -67,19 +69,102 @@
     color: var(--ink);
     text-decoration: none;
   }
-  .menu {
-    display: flex;
-    gap: 28px;
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--ink);
+    cursor: pointer;
   }
-  .menu a {
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .nav-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  .nav {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 24px;
+    right: 24px;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    border-radius: 14px;
+    background: rgba(18, 25, 36, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+  }
+  .nav.open {
+    display: flex;
+  }
+  .nav a {
+    display: block;
     color: var(--ink);
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
     letter-spacing: 0.06em;
+    padding: 12px;
+    border-radius: 10px;
   }
-  .menu a:hover {
+  .nav a:hover {
     color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .nav a[aria-current="page"] {
+    color: var(--accent);
+  }
+  @media (min-width: 900px) {
+    .nav-toggle {
+      display: none;
+    }
+    .nav-row {
+      gap: 32px;
+    }
+    .nav {
+      position: static;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 28px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+    }
+    .nav a {
+      padding: 8px 10px;
+      background: none;
+    }
+    .nav a:hover {
+      background: none;
+    }
   }
 
   /* Header */

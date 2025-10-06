@@ -12,34 +12,38 @@
       rel="stylesheet"
     />
 
-    <style></style>
   </head>
   <body>
-    <header class="hero" id="top" class="site-header">
+    <header class="hero site-header" id="top">
       <img class="bg" src="pictures/Home_bg2.jpg" alt="Background hero image" />
       <div class="overlay"></div>
 
       <div class="nav-wrap">
-        <div class="nav">
+        <div class="nav-row">
           <div class="left">
             <img
               class="avatar"
               src="pictures/profile.jpg"
               alt="Vincent Chirchir"
             />
-            <div class="brand"><a href="index.html">V. CHIRCHIR</a></div>
+            <div class="brand"><a href="index.html">V.CHIRCHIR</a></div>
           </div>
-          <button class="nav-toggle" aria-expanded="false" aria-label="Menu">
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-label="Menu"
+            aria-controls="primary-nav"
+          >
             <span></span><span></span><span></span>
           </button>
-          <nav class="menu" aria-label="Primary" class="nav" data-nav>
+          <nav class="nav" id="primary-nav" aria-label="Primary" data-nav>
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
             <a href="about.html">About Me</a>
             <a href="community.html">Community Engagement</a>
             <a href="gallery.html">My Gallery</a>
             <a href="contact.html">Contact Me</a>
-            
           </nav>
         </div>
       </div>
@@ -110,15 +114,25 @@
       document.addEventListener("DOMContentLoaded", function () {
         const y = document.getElementById("year");
         if (y) y.textContent = new Date().getFullYear();
+
+        const btn = document.querySelector(".nav-toggle");
+        const nav = document.querySelector("[data-nav]");
+        if (!btn || !nav) return;
+
+        btn.addEventListener("click", () => {
+          const open = nav.classList.toggle("open");
+          btn.setAttribute("aria-expanded", String(open));
+        });
+
+        nav.addEventListener("click", (event) => {
+          const link =
+            event.target instanceof Element ? event.target.closest("a") : null;
+          if (!link || !nav.classList.contains("open")) return;
+
+          nav.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        });
       });
     </script>
-    <script>
-  const btn = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('[data-nav]');
-  btn?.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open);
-  });
-</script>
   </body>
 </html>

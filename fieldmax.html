@@ -4,16 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fieldmax</title>
-  <link rel="stylesheet" href="fieldmax.css"/>
+  <link rel="stylesheet" href="fieldmax.css" />
   <link rel="icon" type="image/jpg" href="pictures/icon.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    
-  </style>
 </head>
 <body>
+  <div class="nav-wrap">
+    <div class="nav-row">
+      <div class="nav-left">
+        <img class="avatar" src="pictures/profile.jpg" alt="Vincent Chirchir" />
+        <div class="brand"><a href="index.html">V. CHIRCHIR</a></div>
+      </div>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-label="Menu"
+        aria-controls="primary-nav"
+      >
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary" data-nav>
+        <a href="index.html">Home</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="about.html">About Me</a>
+        <a href="community.html">Community Engagement</a>
+        <a href="gallery.html">My Gallery</a>
+        <a href="contact.html">Contact Me</a>
+      </nav>
+    </div>
+  </div>
   <div class="subnav">
     <div class="subnav-inner">
       <a href="#overview">Overview</a>
@@ -27,8 +49,8 @@
   </div>
 
   <header class="hero container">
-    <h1 class="title">Fieldmax – Sales & Inventory System</h1>
-    <p class="subtitle">A custom retail platform I designed and developed to replace manual records with real‑time stock control, role‑based sales entry, accurate FIFO‑based profit, and a KPI dashboard. Built for day‑to‑day shop operations and future integrations.</p>
+    <h1 class="title">Fieldmax SHOP – POINT OF SALE (POS)</h1>
+    <p class="subtitle">A custom POS system I designed and developed to replace manual records with real‑time stock control, role‑based sales entry, accurate FIFO‑based profit, and a KPI dashboard. Built for day‑to‑day shop operations and future integrations.</p>
     <div class="chips">
       <span class="chip" title="Live metrics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 15l3-3 4 4 5-8"/></svg> Real‑time KPIs</span>
       <span class="chip" title="Inventory logic">FIFO Profit</span>
@@ -169,11 +191,6 @@
   <footer class="container">
     <div class="muted">© <span id="y"></span> Vincent Chirchir</div>
   </footer>
-
-  <script>
-    // Update year
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
   <!-- Lightbox root -->
   <div class="lightbox-overlay" id="lightbox" aria-modal="true" role="dialog">
     <div class="lightbox-controls">
@@ -185,35 +202,76 @@
   </div>
 
   <script>
-    // Update year
-    document.getElementById('y').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', () => {
+      const year = document.getElementById('y');
+      if (year) year.textContent = new Date().getFullYear();
 
-    // Lightweight Lightbox
-    (function(){
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('[data-nav]');
+      if (btn && nav) {
+        btn.addEventListener('click', () => {
+          const open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+
+        nav.addEventListener('click', (event) => {
+          const link = event.target instanceof Element ? event.target.closest('a') : null;
+          if (!link || !nav.classList.contains('open')) return;
+
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      }
+
       const overlay = document.getElementById('lightbox');
       const img = document.getElementById('lbImg');
       const prev = document.getElementById('lbPrev');
       const next = document.getElementById('lbNext');
       const closeBtn = document.getElementById('lbClose');
       const shots = Array.from(document.querySelectorAll('.gallery a.shot'));
+      if (!overlay || !img || !prev || !next || !closeBtn || shots.length === 0) {
+        return;
+      }
+
       let index = 0;
 
-      function open(i){ index=i; img.src = shots[index].getAttribute('href'); overlay.classList.add('active'); }
-      function close(){ overlay.classList.remove('active'); img.removeAttribute('src'); }
-      function step(dir){ index = (index + dir + shots.length) % shots.length; img.src = shots[index].getAttribute('href'); }
+      function open(i) {
+        index = i;
+        img.src = shots[index].getAttribute('href');
+        overlay.classList.add('active');
+      }
 
-      shots.forEach((a,i)=>{ a.addEventListener('click', (e)=>{ e.preventDefault(); open(i); }); });
-      overlay.addEventListener('click', (e)=>{ if(e.target===overlay) close(); });
-      closeBtn.addEventListener('click', close);
-      prev.addEventListener('click', ()=>step(-1));
-      next.addEventListener('click', ()=>step(1));
-      window.addEventListener('keydown', (e)=>{
-        if(!overlay.classList.contains('active')) return;
-        if(e.key==='Escape') close();
-        if(e.key==='ArrowRight') step(1);
-        if(e.key==='ArrowLeft') step(-1);
+      function close() {
+        overlay.classList.remove('active');
+        img.removeAttribute('src');
+      }
+
+      function step(dir) {
+        index = (index + dir + shots.length) % shots.length;
+        img.src = shots[index].getAttribute('href');
+      }
+
+      shots.forEach((a, i) => {
+        a.addEventListener('click', (event) => {
+          event.preventDefault();
+          open(i);
+        });
       });
-    })();
+
+      overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) close();
+      });
+      closeBtn.addEventListener('click', close);
+      prev.addEventListener('click', () => step(-1));
+      next.addEventListener('click', () => step(1));
+
+      window.addEventListener('keydown', (event) => {
+        if (!overlay.classList.contains('active')) return;
+        if (event.key === 'Escape') close();
+        if (event.key === 'ArrowRight') step(1);
+        if (event.key === 'ArrowLeft') step(-1);
+      });
+    });
   </script>
 </body>
 </html>

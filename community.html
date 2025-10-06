@@ -12,11 +12,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <style></style>
   </head>
   <body>
     <div class="nav-wrap">
-      <div class="nav">
+      <div class="nav-row">
         <div class="left">
           <img
             class="avatar"
@@ -25,7 +24,16 @@
           />
           <div class="brand"><a href="index.html">V. CHIRCHIR</a></div>
         </div>
-        <nav class="menu" aria-label="Primary">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-label="Menu"
+          aria-controls="primary-nav"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav" id="primary-nav" aria-label="Primary" data-nav>
           <a href="index.html">Home</a>
           <a href="projects.html">Projects</a>
           <a href="about.html">About Me</a>
@@ -294,7 +302,28 @@
     </main>
 
     <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", () => {
+        const y = document.getElementById("y");
+        if (y) y.textContent = new Date().getFullYear();
+
+        const btn = document.querySelector(".nav-toggle");
+        const nav = document.querySelector("[data-nav]");
+        if (!btn || !nav) return;
+
+        btn.addEventListener("click", () => {
+          const open = nav.classList.toggle("open");
+          btn.setAttribute("aria-expanded", String(open));
+        });
+
+        nav.addEventListener("click", (event) => {
+          const link =
+            event.target instanceof Element ? event.target.closest("a") : null;
+          if (!link || !nav.classList.contains("open")) return;
+
+          nav.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        });
+      });
     </script>
   </body>
 </html>
